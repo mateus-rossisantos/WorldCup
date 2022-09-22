@@ -13,7 +13,7 @@
 		<properties>
 			<property name="eclipselink.logging.level" value="CONFIG" />
 			<property name="jakarta.persistence.jdbc.url"
-				value="jdbc:mysql://localhost:3306/testjpa" />
+				value="jdbc:mysql://localhost:3306/worldcup" />
 			<property name="jakarta.persistence.jdbc.user" value="root" />
 			<property name="jakarta.persistence.jdbc.password"
 				value="root" />

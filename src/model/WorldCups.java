@@ -1,12 +1,17 @@
 package model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
+@Embeddable
 public class WorldCups {
     @Id
+    @Column(name = "Year")
     private int year;
+    @Column(name = "Country")
     private String country;
     private String winner;
     private String runnersUp;
@@ -97,5 +102,21 @@ public class WorldCups {
 
     public void setAttendance(String attendance) {
         this.attendance = attendance;
+    }
+
+    @Override
+    public String toString() {
+        return "WorldCups{" +
+                "year=" + year +
+                ", country='" + country + '\'' +
+                ", winner='" + winner + '\'' +
+                ", runnersUp='" + runnersUp + '\'' +
+                ", third='" + third + '\'' +
+                ", fourth='" + fourth + '\'' +
+                ", goalsScored=" + goalsScored +
+                ", qualifiedTeams=" + qualifiedTeams +
+                ", matchesPlayed=" + matchesPlayed +
+                ", attendance='" + attendance + '\'' +
+                '}';
     }
 }

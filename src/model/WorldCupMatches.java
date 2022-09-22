@@ -1,13 +1,14 @@
 package model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class WorldCupMatches {
     @Id
     private int matchId;
-    private int yearCup;
+    @OneToOne(cascade= CascadeType.ALL)
+    @Embedded
+    private WorldCups yearCup;
     private String dateTime;
     private String stage;
     private String stadium;
@@ -31,11 +32,11 @@ public class WorldCupMatches {
         this.matchId = matchId;
     }
 
-    public int getYearCup() {
+    public WorldCups getYearCup() {
         return yearCup;
     }
 
-    public void setYearCup(int yearCup) {
+    public void setYearCup(WorldCups yearCup) {
         this.yearCup = yearCup;
     }
 
