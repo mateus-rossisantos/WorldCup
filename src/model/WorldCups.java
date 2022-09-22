@@ -13,13 +13,21 @@ public class WorldCups {
     private int year;
     @Column(name = "Country")
     private String country;
+    @Column(name = "Winner")
     private String winner;
+    @Column(name = "RunnersUp")
     private String runnersUp;
+    @Column(name = "Third")
     private String third;
+    @Column(name = "Fourth")
     private String fourth;
+    @Column(name = "GoalsScored")
     private int goalsScored;
+    @Column(name = "QualifiedTeams")
     private int qualifiedTeams;
+    @Column(name = "MatchesPlayed")
     private int matchesPlayed;
+    @Column(name = "Attendance")
     private String attendance;
 
 

@@ -19,7 +19,7 @@ public class WorldCupDAO implements DAO<WorldCups>{
     }
 
     @Override
-    public Optional<WorldCups> get(long id) {
+    public Optional<WorldCups> get(int id) {
         var em = getEntityManager();
 
         try {
