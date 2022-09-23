@@ -21,12 +21,9 @@ public class WorldCupDAO implements DAO<WorldCups>{
     @Override
     public Optional<WorldCups> get(int id) {
         var em = getEntityManager();
-
         try {
-            var todo = em.find(WorldCups.class, id);
-
-            return Optional.ofNullable(todo);
-
+            var worldCup = em.find(WorldCups.class, id);
+            return Optional.ofNullable(worldCup);
         } finally {
             em.close();
         }

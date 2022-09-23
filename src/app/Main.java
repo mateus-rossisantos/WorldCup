@@ -4,21 +4,61 @@ import DAO.WorldCupDAO;
 import DAO.WorldCupMatchesDAO;
 import model.WorldCupMatches;
 import model.WorldCups;
+import service.WorldCupService;
 
 import java.util.Optional;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        var worldCupDAO = new WorldCupDAO();
-        var worldCupMatchesDAO = new WorldCupMatchesDAO();
+        WorldCupService worldCupService = new WorldCupService(new WorldCupDAO(), new WorldCupMatchesDAO());
+        Scanner prompt = new Scanner(System.in);
 
-        Optional<WorldCups> cups = worldCupDAO.get(2014);
+        System.out.println("------------------------------");
+        System.out.println("----TRABALHO JPA WORLD CUP----");
+        System.out.println("------------------------------");
+        System.out.println("Edelberto Rosler");
+        System.out.println("Mateus Rossi dos Santos");
 
-        Optional<WorldCupMatches> finals = worldCupMatchesDAO.get(27);
+        boolean continuar = true;
+        while (continuar){
+            System.out.println("Selecione uma opção no menu:");
+            System.out.println("1 - Listar informações sobre as copas:");
+            System.out.println("2 - Buscar informações sobre a final de uma Copa do Mundo a partir do ano do evento:");
+            System.out.println("3 - Inserir dados sobre a copa do mundo de 2018:");
+            System.out.println("4 - Verificar desempenho de uma seleção:");
+            System.out.println("5 - Buscar informações detalhadas da copa a partir do ano da competição:");
+            System.out.println("0 - Sair");
 
-        System.out.println(finals);
+            int opcao = prompt.nextInt();
+
+            switch (opcao){
+                case 1:
+                    worldCupService.getWorldCupInformation();
+                    break;
+                case 2:
+                    worldCupService.getFinalInformationByYear();
+                    break;
+                case 3:
+                    worldCupService.insertRussiaCupData();
+                    break;
+                case 4:
+                    worldCupService.getCountryInformation();
+                    break;
+                case 5:
+                    worldCupService.getWorldCupInformationByYear();
+                    break;
+                case 0:
+                    continuar = false;
+                default:
+                    System.out.println("Opção inválida.");
+            }
+
+        }
+
+
 
     }
 
