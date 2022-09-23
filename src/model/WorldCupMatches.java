@@ -4,22 +4,38 @@ import jakarta.persistence.*;
 
 @Entity
 public class WorldCupMatches {
+
     @Id
+    @Column(name = "MatchID")
     private int matchId;
+
+    @JoinColumn(name = "Year_Cup")
     @OneToOne(cascade= CascadeType.ALL)
-    @Embedded
     private WorldCups yearCup;
+
+    @Column(name = "Datetime")
     private String dateTime;
+    @Column(name = "Stage")
     private String stage;
+    @Column(name = "Stadium")
     private String stadium;
+    @Column(name = "City")
     private String city;
+    @Column(name = "Home_Team_Name")
     private String homeTeamName;
+    @Column(name = "Home_Team_Goals")
     private String homeTeamGoals;
+    @Column(name = "Away_Team_Name")
     private String awayTeamName;
+    @Column(name = "Away_Team_Goals")
     private String awayTeamGoals;
+    @Column(name = "Win_conditions")
     private String winConditions;
+    @Column(name = "Referee")
     private String referee;
+    @Column(name = "Home_Team_Initials")
     private String homeTeamInitials;
+    @Column(name = "Away_Team_Initials")
     private String awayTeamInitials;
 
 
@@ -134,5 +150,25 @@ public class WorldCupMatches {
 
     public void setAwayTeamInitials(String awayTeamInitials) {
         this.awayTeamInitials = awayTeamInitials;
+    }
+
+    @Override
+    public String toString() {
+        return "WorldCupMatches{" +
+                "matchId=" + matchId +
+                ", yearCup=" + yearCup +
+                ", dateTime='" + dateTime + '\'' +
+                ", stage='" + stage + '\'' +
+                ", stadium='" + stadium + '\'' +
+                ", city='" + city + '\'' +
+                ", homeTeamName='" + homeTeamName + '\'' +
+                ", homeTeamGoals='" + homeTeamGoals + '\'' +
+                ", awayTeamName='" + awayTeamName + '\'' +
+                ", awayTeamGoals='" + awayTeamGoals + '\'' +
+                ", winConditions='" + winConditions + '\'' +
+                ", referee='" + referee + '\'' +
+                ", homeTeamInitials='" + homeTeamInitials + '\'' +
+                ", awayTeamInitials='" + awayTeamInitials + '\'' +
+                '}';
     }
 }

@@ -6,7 +6,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-@Embeddable
 public class WorldCups {
     @Id
     @Column(name = "Year")
