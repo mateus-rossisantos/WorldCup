@@ -1,7 +1,9 @@
 <component name="libraryTable">
   <library name="eclipselink">
     <CLASSES>
-      <root url="jar://$USER_HOME$/Downloads/eclipselink.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/eclipselink.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/jakarta.persistence-api.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/mysql-connector-java-8.0.26.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

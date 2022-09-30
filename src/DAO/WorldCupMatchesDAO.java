@@ -4,10 +4,10 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import model.WorldCupMatches;
-import model.WorldCups;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class WorldCupMatchesDAO implements DAO<WorldCupMatches>{
 
@@ -20,40 +20,26 @@ public class WorldCupMatchesDAO implements DAO<WorldCupMatches>{
     }
 
     @Override
-    public Optional<WorldCupMatches> get(int id) {
+    public Optional<WorldCupMatches> get(int year) {
+        return Optional.ofNullable(getByYear(year));
+    }
+
+    public WorldCupMatches getByYear(int year) {
         var em = getEntityManager();
-
         try {
-            var todo = em.find(WorldCupMatches.class, id);
 
-            return Optional.ofNullable(todo);
+            List<WorldCupMatches> finais = em.createQuery("SELECT a FROM WorldCupMatches a", WorldCupMatches.class).getResultList();
 
+            return finais.stream().filter(w -> w.getYearCup().getYear() == year)
+                    .collect(Collectors.toList()).get(0);
         } finally {
             em.close();
         }
     }
 
-    @Override
-    public List<WorldCupMatches> getAll() {
-        return null;
-    }
-
-    @Override
-    public void save(WorldCupMatches worldCups) {
-
-    }
-
-    @Override
-    public void update(WorldCupMatches worldCups) {
-
-    }
-
-    @Override
-    public void delete(WorldCupMatches worldCups) {
-
-    }
-
     private static String getPersistenceUnit() {
         return PERSISTENCE_UNIT;
     }
+
+
 }

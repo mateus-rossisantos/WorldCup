@@ -29,27 +29,18 @@ public class WorldCupDAO implements DAO<WorldCups>{
         }
     }
 
-    @Override
-    public List<WorldCups> getAll() {
-        return null;
-    }
-
-    @Override
-    public void save(WorldCups worldCups) {
-
-    }
-
-    @Override
-    public void update(WorldCups worldCups) {
-
-    }
-
-    @Override
-    public void delete(WorldCups worldCups) {
-
+    public List<WorldCups> getByCountry() {
+        var em = getEntityManager();
+        try {
+            return em.createQuery("SELECT a FROM WorldCups a", WorldCups.class).getResultList();
+        } finally {
+            em.close();
+        }
     }
 
     private static String getPersistenceUnit() {
         return PERSISTENCE_UNIT;
     }
+
+
 }

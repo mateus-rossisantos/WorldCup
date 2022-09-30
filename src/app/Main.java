@@ -2,26 +2,27 @@ package app;
 
 import DAO.WorldCupDAO;
 import DAO.WorldCupMatchesDAO;
-import model.WorldCupMatches;
-import model.WorldCups;
 import service.WorldCupService;
 
-import java.util.Optional;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        WorldCupService worldCupService = new WorldCupService(new WorldCupDAO(), new WorldCupMatchesDAO());
-        Scanner prompt = new Scanner(System.in);
-
         System.out.println("------------------------------");
         System.out.println("----TRABALHO JPA WORLD CUP----");
         System.out.println("------------------------------");
+
+        menu();
+
         System.out.println("Edelberto Rosler");
         System.out.println("Mateus Rossi dos Santos");
+    }
 
+    private static void menu() {
+        WorldCupService worldCupService = new WorldCupService(new WorldCupDAO(), new WorldCupMatchesDAO());
+        Scanner prompt = new Scanner(System.in);
         boolean continuar = true;
         while (continuar){
             System.out.println("Selecione uma opção no menu:");
@@ -52,14 +53,11 @@ public class Main {
                     break;
                 case 0:
                     continuar = false;
+                    break;
                 default:
                     System.out.println("Opção inválida.");
             }
-
         }
-
-
-
     }
 
 }
