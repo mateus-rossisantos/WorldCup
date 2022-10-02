@@ -20,7 +20,16 @@ public class WorldCupService {
     }
 
     public void getWorldCupInformation() {
-        
+        System.out.println("------- BASIC WORLD CUPS INFORMATIONS ---------");
+        List<WorldCups> copas = worldCupDAO.getByCountry();
+        copas.forEach(copa -> {
+            System.out.println("Copa de " + copa.getYear() + ": ");
+            System.out.println(
+                    "Sede: " + copa.getCountry() +
+                    "Campeão: " + copa.getWinner() +
+                    "Vice-campeão: " + copa.getRunnersUp()
+            );
+        });
     }
 
     public void getFinalInformationByYear() {

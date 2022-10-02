@@ -16,7 +16,7 @@ public class Main {
 
         menu();
 
-        System.out.println("Edelberto Rosler");
+        System.out.println("Edelberto Hermann Rösler");
         System.out.println("Mateus Rossi dos Santos");
     }
 
