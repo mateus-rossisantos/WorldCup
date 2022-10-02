@@ -23,12 +23,15 @@ public class WorldCupService {
         System.out.println("------- BASIC WORLD CUPS INFORMATIONS ---------");
         List<WorldCups> copas = worldCupDAO.getByCountry();
         copas.forEach(copa -> {
+            System.out.println("------------------------------------------------------");
             System.out.println("Copa de " + copa.getYear() + ": ");
             System.out.println(
-                    "Sede: " + copa.getCountry() +
-                    "Campeão: " + copa.getWinner() +
-                    "Vice-campeão: " + copa.getRunnersUp()
+                    "| Sede: " + copa.getCountry() + " | " +
+                    "Campeão: " + copa.getWinner() + " | " +
+                    "Vice-campeão: " + copa.getRunnersUp() + " |"
             );
+            System.out.println("------------------------------------------------------");
+            System.out.println("");
         });
     }
 
@@ -55,6 +58,7 @@ public class WorldCupService {
     }
 
     public void insertRussiaCupData() {
+        
     }
 
     public void getCountryInformation() {
