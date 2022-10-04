@@ -59,7 +59,7 @@ public class WorldCupService {
 
     public void insertRussiaCupData() {
         worldCupDAO.insertCup();
-        System.out.println(" Dados da copa do mundo de 2018 inseridas com sucesso!");
+        System.out.println(" Dados da copa do mundo de 2018 inseridos com sucesso!");
 
     }
 
