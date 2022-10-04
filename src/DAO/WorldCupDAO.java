@@ -38,6 +38,18 @@ public class WorldCupDAO implements DAO<WorldCups>{
         }
     }
 
+
+    public List<WorldCups> insertCup() {
+        var em = getEntityManager();
+        try {
+            return em.createQuery("INSERT INTO (Year,Year, Country, Winner, RunnersUp, Third, Fourth, GoalsScored, QualifieldTeams, MatchesPlayed, Attendance)" +
+                    "VALUES (2018, 'Russia', 'France', 'Croatia', 'Belgium', 'England', 169, 32, 64, '3.031.768')",
+                    model.WorldCups.class).getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
     private static String getPersistenceUnit() {
         return PERSISTENCE_UNIT;
     }

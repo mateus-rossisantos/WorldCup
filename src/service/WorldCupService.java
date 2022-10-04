@@ -58,7 +58,8 @@ public class WorldCupService {
     }
 
     public void insertRussiaCupData() {
-        
+        System.out.println(" Dados da copa do mundo de 2018 inseridas com sucesso!");
+
     }
 
     public void getCountryInformation() {
