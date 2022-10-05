@@ -59,16 +59,9 @@ public class WorldCupService {
     }
 
     public void insertRussiaCupData() {
-        AtomicBoolean copaExist = new AtomicBoolean(false);
-        List<WorldCups> copas = worldCupDAO.getByCountry();
-        copas.forEach(copa -> {
-            if (copa.getCountry() == "Russia"){
-                copaExist.set(true);
-            }
-        });
+        Optional<WorldCups> copa = worldCupDAO.get(2018);
 
-        boolean cup = copaExist.get();
-        if (cup) {
+        if (copa.isEmpty()) {
             System.out.println("Inserindo os dados...");
             System.out.println("");
             WorldCups newCup = new WorldCups();

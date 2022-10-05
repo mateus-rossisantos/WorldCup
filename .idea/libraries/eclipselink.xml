@@ -2,6 +2,8 @@
   <library name="eclipselink">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/../eclipselink.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../jakarta.persistence-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../mysql-connector-java-8.0.26.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
