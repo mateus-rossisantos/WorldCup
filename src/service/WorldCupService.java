@@ -8,6 +8,7 @@ import model.WorldCups;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class WorldCupService {
 
@@ -23,14 +24,14 @@ public class WorldCupService {
         System.out.println("------- BASIC WORLD CUPS INFORMATIONS ---------");
         List<WorldCups> copas = worldCupDAO.getByCountry();
         copas.forEach(copa -> {
-            System.out.println("------------------------------------------------------");
-            System.out.println("Copa de " + copa.getYear() + ": ");
+            System.out.println("|-------------------------------------------------------------------|");
+            System.out.println("| Copa de " + copa.getYear() + ": ");
             System.out.println(
                     "| Sede: " + copa.getCountry() + " | " +
                     "Campeão: " + copa.getWinner() + " | " +
-                    "Vice-campeão: " + copa.getRunnersUp() + " |"
+                    "Vice-campeão: " + copa.getRunnersUp()
             );
-            System.out.println("------------------------------------------------------");
+            System.out.println("|-------------------------------------------------------------------|");
             System.out.println("");
         });
     }
@@ -58,9 +59,34 @@ public class WorldCupService {
     }
 
     public void insertRussiaCupData() {
-        worldCupDAO.insertCup();
-        System.out.println(" Dados da copa do mundo de 2018 inseridos com sucesso!");
+        AtomicBoolean copaExist = new AtomicBoolean(false);
+        List<WorldCups> copas = worldCupDAO.getByCountry();
+        copas.forEach(copa -> {
+            if (copa.getCountry() == "Russia"){
+                copaExist.set(true);
+            }
+        });
 
+        boolean cop = copaExist.get();
+        if (cop) {
+            System.out.println("Inserindo os dados...");
+            WorldCups newCopa = new WorldCups();
+            newCopa.setYear(2018);
+            newCopa.setCountry("Russia");
+            newCopa.setWinner("France");
+            newCopa.setRunnersUp("Croatia");
+            newCopa.setThird("Belgium");
+            newCopa.setFourth("England");
+            newCopa.setGoalsScored(169);
+            newCopa.setQualifiedTeams(32);
+            newCopa.setMatchesPlayed(64);
+            newCopa.setAttendance("3.031.768");
+
+            worldCupDAO.insertCup(newCopa);
+            System.out.println("");
+            System.out.println(" Dados da copa do mundo inseridos com sucesso!");
+        } else System.out.println("Esta copa já está registrada no nosso banco de dados.");
+        System.out.println("");
     }
 
     public void getCountryInformation() {

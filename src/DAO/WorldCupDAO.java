@@ -39,13 +39,17 @@ public class WorldCupDAO implements DAO<WorldCups>{
     }
 
 
-    public List<WorldCups> insertCup() {
+    public void insertCup(WorldCups w) {
         var em = getEntityManager();
         try {
-            return em.createQuery("INSERT INTO (Year,Year, Country, Winner, RunnersUp, Third, Fourth, GoalsScored, QualifieldTeams, MatchesPlayed, Attendance)" +
-                    "VALUES (2018, 'Russia', 'France', 'Croatia', 'Belgium', 'England', 169, 32, 64, '3.031.768')",
-                    model.WorldCups.class).getResultList();
-        } finally {
+            em.getTransaction().begin();
+            em.persist(w);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            em.getTransaction().rollback();
+        }
+        finally {
             em.close();
         }
     }
