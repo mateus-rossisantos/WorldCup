@@ -67,25 +67,28 @@ public class WorldCupService {
             }
         });
 
-        boolean cop = copaExist.get();
-        if (cop) {
+        boolean cup = copaExist.get();
+        if (cup) {
             System.out.println("Inserindo os dados...");
-            WorldCups newCopa = new WorldCups();
-            newCopa.setYear(2018);
-            newCopa.setCountry("Russia");
-            newCopa.setWinner("France");
-            newCopa.setRunnersUp("Croatia");
-            newCopa.setThird("Belgium");
-            newCopa.setFourth("England");
-            newCopa.setGoalsScored(169);
-            newCopa.setQualifiedTeams(32);
-            newCopa.setMatchesPlayed(64);
-            newCopa.setAttendance("3.031.768");
+            System.out.println("");
+            WorldCups newCup = new WorldCups();
+            newCup.setYear(2018);
+            newCup.setCountry("Russia");
+            newCup.setWinner("France");
+            newCup.setRunnersUp("Croatia");
+            newCup.setThird("Belgium");
+            newCup.setFourth("England");
+            newCup.setGoalsScored(169);
+            newCup.setQualifiedTeams(32);
+            newCup.setMatchesPlayed(64);
+            newCup.setAttendance("3.031.768");
 
-            worldCupDAO.insertCup(newCopa);
+            worldCupDAO.insertCup(newCup);
             System.out.println("");
             System.out.println(" Dados da copa do mundo inseridos com sucesso!");
+
         } else System.out.println("Esta copa já está registrada no nosso banco de dados.");
+
         System.out.println("");
     }
 
